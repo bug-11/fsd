@@ -1,0 +1,16 @@
+import React, { useState } from "react";
+
+export default function App() {
+  const [msg, setMsg] = useState("Hello!");
+
+  return (
+    <div>
+      <h2>Screen Update Example</h2>
+      <p>{msg}</p>
+
+      <button onClick={() => setMsg("Screen Updated!")}>
+        Update Screen
+      </button>
+    </div>
+  );
+}
