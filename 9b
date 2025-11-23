@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 
 export default function App() {
-  const [msg, setMsg] = useState("Hello!");
+  const [msg, setMsg] = useState("Welcome! Click a button to update the screen.");
 
   return (
     <div>
       <h2>Screen Update Example</h2>
       <p>{msg}</p>
 
-      <button onClick={() => setMsg("Screen Updated!")}>
+      <button onClick={() => setMsg("Screen Updated Successfully!")}>
         Update Screen
+      </button>
+      <br /><br />
+
+      <button onClick={() => setMsg("Hello Likki! This is a new message!")}>
+        Show Another Message
       </button>
     </div>
   );
