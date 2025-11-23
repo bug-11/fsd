@@ -1,0 +1,27 @@
+import React, { useState } from "react";
+
+function ChildFunc({ text }) {
+  return <p>From Parent (Props): {text}</p>;
+}
+
+class ChildClass extends React.Component {
+  render() {
+    return <p>From child(State): {this.props.msg}</p>;
+  }
+}
+
+export default function App() {
+  const [msg, setMsg] = useState("Hello parent!");
+
+  return (
+    <div>
+      <h3>Parent Component</h3>
+
+      <ChildFunc text="Hello child!" />
+
+      <ChildClass msg={msg} />
+
+      <button onClick={() => setMsg("Iam fine!")}>Update</button>
+    </div>
+  );
+}
