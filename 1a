@@ -1,0 +1,21 @@
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Home Route');
+});
+
+app.get('/user/:name', (req, res) => {
+  res.send('Hello ' + req.params.name);
+});
+
+app.get('/search', (req, res) => {
+  res.send('You searched for: ' + req.query.q);
+});
+
+app.get('/link', (req, res) => {
+  const url = req.protocol + '://' + req.get('host') + '/user/likki';
+  res.send('Built URL: ' + url);
+});
+
+app.listen(3000, () => console.log('Server running'));
