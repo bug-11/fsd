@@ -1,30 +1,37 @@
 const express = require("express");
 const app = express();
+
 app.use(express.json());
 
-let data = [];
+let users = [];
 
-// POST
+// POST → Add user
 app.post("/users", (req, res) => {
-  data.push(req.body);
-  res.send("Added");
+  users.push(req.body);
+  res.send("User added");
 });
 
-// GET
+// GET → Retrieve all users
 app.get("/users", (req, res) => {
-  res.json(data);
+  res.json(users);
 });
 
-// PUT
+// PUT → Update user by id
 app.put("/users/:id", (req, res) => {
-  data = data.map(u => u.id == req.params.id ? req.body : u);
-  res.send("Updated");
+  const id = req.params.id;
+  users = users.map(u => 
+    u.id == id ? { ...u, ...req.body } : u
+  );
+  res.send("User updated with id: " + id);
 });
 
-// DELETE
+// DELETE → Delete user by id
 app.delete("/users/:id", (req, res) => {
-  data = data.filter(u => u.id != req.params.id);
-  res.send("Deleted");
+  const id = req.params.id;
+  users = users.filter(u => u.id != id);
+  res.send("User deleted with id: " + id);
 });
 
-app.listen(3000, () => console.log("http://localhost:3000"));
+app.listen(3000, () => {
+  console.log("Server running at: http://localhost:3000/");
+});
