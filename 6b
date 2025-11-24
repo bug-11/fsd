@@ -1,0 +1,15 @@
+// CREATE DATABASE
+use collegeDB;
+
+// CREATE COLLECTION
+db.students.insertOne({ roll: 1, name: "Likki" });
+
+// SHOW COLLECTIONS
+show collections;
+
+// DROP COLLECTION
+db.students.drop();
+
+// DROP DATABASE
+use collegeDB;
+db.dropDatabase();
