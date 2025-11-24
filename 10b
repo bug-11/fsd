@@ -1,0 +1,26 @@
+// Use database
+use employeeDB;
+
+// Sample Records
+db.emp.insertMany([
+  { id: 1, name: "Likki", salary: 30000, dept: "IT" },
+  { id: 2, name: "Joe", salary: 25000, dept: "HR" },
+  { id: 3, name: "Sam", salary: 40000, dept: "IT" }
+]);
+
+// FIND
+db.emp.find();
+
+// LIMIT
+db.emp.find().limit(2);
+
+// SORT (1 = ASC, -1 = DESC)
+db.emp.find().sort({ salary: -1 });
+
+// CREATE INDEX
+db.emp.createIndex({ name: 1 });
+
+// AGGREGATE (group by dept)
+db.emp.aggregate([
+  { $group: { _id: "$dept", total: { $sum: "$salary" } } }
+]);
